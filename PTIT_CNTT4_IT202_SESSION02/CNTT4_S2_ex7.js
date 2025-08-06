@@ -1,3 +1,4 @@
-import { now } from "./s72.js";
+import { t, timenow } from "./s72.js";
 
-console.log(`${now.getDay()} / ${now.getMonth()} / ${now.getFullYear()}`);
+
+timenow(t);

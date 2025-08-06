@@ -1,0 +1,20 @@
+{
+  "name": "it_202",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000I\u0000T\u0000_\u00002\u00000\u00002\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WallkerTan/IT_202.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WallkerTan/IT_202/issues"
+  },
+  "homepage": "https://github.com/WallkerTan/IT_202#readme"
+}
