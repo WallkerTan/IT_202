@@ -22,8 +22,13 @@ let showBilld = (used) => {
         Đơn hàng: ${used.orderId}
         Khách hàng: ${used.customerName}
         Sản phẩm:`);
-    const Z = used.items.map((e) => `${e.product.name} X ${e.quantity} -> ${e.product.price * e.quantity}`);
+    let t = 0;
+    const Z = used.items.map((e) => {
+        t += e.product.price * e.quantity;
+        return `${e.product.name} X ${e.quantity} -> ${e.product.price * e.quantity}`;
+    });
     console.log(Z);
+    console.log("tong cong:" + t + "vnd");
 };
 buyproduct("1", "ca1", 1000, 2, tan);
 buyproduct("2", "ca2", 1000, 2, tan);
