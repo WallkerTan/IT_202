@@ -1,68 +1,75 @@
 export {};
-type Product = {
-  readonly id: string;
-  name: string;
-  price: number;
-};
 
-type OrderItem = {
-  product: Product;
-  quantity: number;
-};
+class book {
+    private title: string;
+    private author: string;
+    private id: number;
+    constructor(title: string, author: string, id: number) {
+        this.author = author;
+        this.title = title;
+        this.id = id;
+    }
 
-type Order = {
-  orderId: string;
-  customerName: string;
-  items: OrderItem[];
-  note?: string;
-};
+    settitle(title: string) {
+        this.title = title;
+    }
 
-function calculateOrderTotal(order: Order): number {
-  return order.items.reduce((total, item) => {
-    return total + item.product.price * item.quantity;
-  }, 0);
+    setauthor(author: string) {
+        this.author = author;
+    }
+
+    gettitle(): string {
+        return this.title;
+    }
+    getauthor(): string {
+        return this.author;
+    }
+    getid(): number {
+        return this.id;
+    }
 }
 
-const order: Order = {
-  orderId: "ORD001",
-  customerName: "Nguyễn Văn A",
-  items: [
-    {
-      product: {
-        id: "P001",
-        name: "Áo sơ mi",
-        price: 250000, 
-      },
-      quantity: 2,
-    },
-    {
-      product: {
-        id: "P002",
-        name: "Quần tây",
-        price: 400000,
-      },
-      quantity: 1,
-    },
-  ],
-  note: "Giao sau 18h",
-};
+class Library {
+    listBook: book[] = [];
+    pushbook(b: book) {
+        this.listBook.push(b);
+    }
+    outBook() {
+        this.listBook.forEach((e) => {
+            console.log(e.gettitle(), e.getauthor());
+        });
+    }
 
+    update(title: string, author: string, id: number) {
+        this.listBook.forEach((e) => {
+            if (e.getid() == id) {
+                e.settitle(title);
+                e.setauthor(author);
+            }
+        });
+    }
 
-function printOrder(order: Order): void {
-  console.log(`Đơn hàng: #${order.orderId}`);
-  console.log(`Khách hàng: ${order.customerName}`);
-  console.log(`Sản phẩm:`);
-  order.items.forEach(item => {
-    const name = item.product.name;
-    const quantity = item.quantity;
-    const total = item.product.price * quantity;
-    console.log(`- ${name} × ${quantity} → ${total.toLocaleString("vi-VN")} VND`);
-  });
-  const total = calculateOrderTotal(order);
-  console.log(`Tổng cộng: ${total.toLocaleString("vi-VN")} VND`);
-  if (order.note) {
-    console.log(`Ghi chú: ${order.note}`);
-  }
+    search(name: string) {
+        this.listBook.forEach((e) => {
+            if (e.gettitle().includes(name)) {
+                console.log(e.gettitle(), e.getauthor());
+            }
+        });
+    }
 }
 
-printOrder(order);
+const a = new book("tan", "tan5", 1);
+const b = new book("tan2", "tan4", 2);
+const c = new book("tan3", "tan3", 3);
+const d = new book("tan4", "tan2", 4);
+const e = new book("tan5", "tan1", 5);
+
+const l = new Library();
+l.pushbook(a);
+l.pushbook(b);
+l.pushbook(c);
+l.pushbook(d);
+l.pushbook(e);
+l.update("tandz", "bikipdz", 1);
+l.outBook();
+l.search("tan1");

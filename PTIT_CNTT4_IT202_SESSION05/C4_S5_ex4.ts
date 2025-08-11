@@ -1,14 +1,33 @@
 export {};
-function handleUnionType(input: string | number): void {
-    if (typeof input === "string") {
-        console.log(`${input.length} ký tự`);
-    } else if (typeof input === "number") {
-        if (input % 2 === 0) {
-            console.log("Đây là số chẵn");
-        } else {
-            console.log("Đây là số lẻ");
-        }
-    } else {
-        console.log("Kiểu dữ liệu không hợp lệ");
+
+class Vehicle {
+    name: string;
+    private year: number;
+    protected company: string;
+
+    constructor(name: string, year: number, company: string) {
+        this.name = name;
+        this.company = company;
+        this.year = year;
+    }
+    getyear(): number {
+        return this.year;
     }
 }
+
+class full extends Vehicle {
+    readonly id: number;
+    constructor(name: string, year: number, company: string, id: number) {
+        super(name, year, company);
+        this.id = id;
+    }
+    getcompany(): string {
+        return this.company;
+    }
+}
+
+const a = new full("tan", 1000, "tanentertypement", 1);
+console.log(`${a.name}
+    ${a.getyear()}
+    ${a.id}
+    ${a.getcompany()}`);

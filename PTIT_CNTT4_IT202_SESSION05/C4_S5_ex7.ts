@@ -1,34 +1,68 @@
 export {};
 
-function processInput(input: string | number | boolean): void {
-    if (typeof input === "string") {
-        if (/^\d+$/.test(input)) {
-            const num = Number(input);
-            console.log(num * num);
-        } else {
-            const letters = input.match(/[a-zA-Z]/g);
-            const count = letters ? letters.length : 0;
-            console.log(`${count} ký tự chữ cái`);
-        }
-    } else if (typeof input === "number") {
-        if (isPrime(input)) {
-            console.log("Là số nguyên tố");
-        } else {
-            console.log("Không phải số nguyên tố");
-        }
-    } else if (typeof input === "boolean") {
-        if (input) {
-            console.log("Giá trị là true - tiến hành xử lý");
-        } else {
-            console.log("Giá trị là false - dừng xử lý");
-        }
+class book {
+    private title: string;
+    private author: string;
+    private id: number;
+    constructor(title: string, author: string, id: number) {
+        this.author = author;
+        this.title = title;
+        this.id = id;
+    }
+
+    settitle(title: string) {
+        this.title = title;
+    }
+
+    setauthor(author: string) {
+        this.author = author;
+    }
+
+    gettitle() {
+        console.log(this.title);
+    }
+    getauthor() {
+        console.log(this.author);
+    }
+    getid(): number {
+        return this.id;
     }
 }
 
-function isPrime(n: number): boolean {
-    if (!Number.isInteger(n) || n < 2) return false;
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i === 0) return false;
+class Library {
+    listBook: book[] = [];
+    pushbook(b: book) {
+        this.listBook.push(b);
     }
-    return true;
+    outBook() {
+        this.listBook.forEach((e) => {
+            e.gettitle();
+            e.getauthor();
+            e.getid();
+        });
+    }
+
+    update(title: string, author: string, id: number) {
+        this.listBook.forEach((e) => {
+            if (e.getid() == id) {
+                e.settitle(title);
+                e.setauthor(author);
+            }
+        });
+    }
 }
+
+const a = new book("tan", "tan5", 1);
+const b = new book("tan2", "tan4", 2);
+const c = new book("tan3", "tan3", 3);
+const d = new book("tan4", "tan2", 4);
+const e = new book("tan5", "tan1", 5);
+
+const l = new Library();
+l.pushbook(a);
+l.pushbook(b);
+l.pushbook(c);
+l.pushbook(d);
+l.pushbook(e);
+l.update("tandz", "bikipdz", 1);
+l.outBook();

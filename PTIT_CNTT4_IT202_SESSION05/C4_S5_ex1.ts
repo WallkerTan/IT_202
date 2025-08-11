@@ -1,13 +1,27 @@
 export {};
-let students: string[] = [
-    "Nguyen Van A",
-    "Nguyen Van B",
-    "Nguyen Van C",
-    "Nguyen Van D",
-    "Nguyen Van E",
-];
 
-console.log("Danh sách sinh viên:");
-for (let i = 0; i < students.length; i++) {
-    console.log(`${i + 1}. ${students[i]}`);
+class Shape {
+    public name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    getsize(): void {}
 }
+
+class Rectangle extends Shape {
+    public width: number;
+    public height: number;
+    constructor(name: string, width: number, height: number) {
+        super(name);
+        this.width = width;
+        this.height = height;
+    }
+    getsize(): void {
+        console.log(this.width * this.height);
+    }
+}
+
+const tv = new Rectangle("sony", 100, 100);
+
+tv.getsize();
+ 

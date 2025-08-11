@@ -1,72 +1,86 @@
 export {};
-class Member {
+
+class book {
+    private title: string;
+    private author: string;
     private id: number;
-    private name: string;
-    private status: string; // "active" hoặc "blocked"
-
-    constructor(id: number, name: string) {
+    constructor(title: string, author: string, id: number) {
+        this.author = author;
+        this.title = title;
         this.id = id;
-        this.name = name;
-        this.status = "active";
     }
 
-    getId(): number {
+    settitle(title: string) {
+        this.title = title;
+    }
+
+    setauthor(author: string) {
+        this.author = author;
+    }
+
+    gettitle(): string {
+        return this.title;
+    }
+    getauthor(): string {
+        return this.author;
+    }
+    getid(): number {
         return this.id;
-    }
-    getName(): string {
-        return this.name;
-    }
-    getStatus(): string {
-        return this.status;
-    }
-
-    setStatus(newStatus: string): void {
-        this.status = newStatus;
     }
 }
 
 class Library {
-    private members: Member[] = [];
-
-    registerMember(id: number, name: string): void {
-        const newMember = new Member(id, name);
-        this.members.push(newMember);
-        console.log(`Đã đăng ký thành viên: ${name}`);
+    listBook: book[] = [];
+    pushbook(b: book) {
+        this.listBook.push(b);
     }
-
-    blockMember(id: number): void {
-        const member = this.members.find((m) => m.getId() === id);
-        if (member) {
-            member.setStatus("blocked");
-            console.log(`Thành viên ID ${id} đã bị khóa.`);
-        } else {
-            console.log(`Không tìm thấy thành viên có ID ${id}.`);
-        }
-    }
-
-    showMembers(): void {
-        console.log("Danh sách thành viên:");
-        if (this.members.length === 0) {
-            console.log("Không có thành viên nào.");
-            return;
-        }
-        this.members.forEach((m) => {
-            console.log(
-                `ID: ${m.getId()} | Tên: ${m.getName()} | Trạng thái: ${m.getStatus()}`
-            );
+    outBook() {
+        this.listBook.forEach((e) => {
+            console.log(e.gettitle(), e.getauthor());
         });
+    }
+
+    update(title: string, author: string, id: number) {
+        this.listBook.forEach((e) => {
+            if (e.getid() == id) {
+                e.settitle(title);
+                e.setauthor(author);
+            }
+        });
+    }
+
+    search(name: string) {
+        this.listBook.forEach((e) => {
+            if (e.gettitle().includes(name)) {
+                console.log(e.gettitle(), e.getauthor());
+            }
+        });
+    }
+
+    delebook(id: number) {
+        let t = this.listBook.findIndex((e) => e.getid() == id);
+        if (t != -1) {
+            this.listBook = [
+                ...this.listBook.slice(0, t),
+                ...this.listBook.slice(t + 1),
+            ];
+        } else {
+            console.log("khong tim thay");
+        }
     }
 }
 
-const myLibrary = new Library();
+const a = new book("tan", "tan5", 1);
+const b = new book("tan2", "tan4", 2);
+const c = new book("tan3", "tan3", 3);
+const d = new book("tan4", "tan2", 4);
+const e = new book("tan5", "tan1", 5);
 
-myLibrary.registerMember(1, "Nguyễn Văn A");
-myLibrary.registerMember(2, "Trần Thị B");
-myLibrary.registerMember(3, "Lê Văn C");
-
-myLibrary.showMembers();
-
-myLibrary.blockMember(2);
-
-console.log("Sau khi khóa thành viên:");
-myLibrary.showMembers();
+const l = new Library();
+l.pushbook(a);
+l.pushbook(b);
+l.pushbook(c);
+l.pushbook(d);
+l.pushbook(e);
+l.delebook(1);
+l.outBook();
