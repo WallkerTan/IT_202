@@ -1,12 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let StudentsScore = [
-    8.5, 7.2, 9.0, 6.8, 7.5, 8.0, 6.9, 9.2, 7.8, 8.3,
-];
-function calculateAverageScore(scores) {
-    let total = 0;
-    for (let i = 0; i < scores.length; i++) {
-        total += scores[i];
+class job {
+    constructor(type) {
+        this.type = type;
     }
-    return total / scores.length;
+    prinType() {
+        console.log(this.type);
+    }
+    calculateSalary() { }
 }
+class PartimeJob extends job {
+    constructor(type, workingHour) {
+        super(type);
+        this.workingHour = workingHour;
+    }
+    calculateSalary() {
+        return 30000 * this.workingHour;
+    }
+}
+class FulltimeJob extends job {
+    calculateSalary() {
+        return 10000000;
+    }
+}
+const a = new PartimeJob("haha", 100);
+const b = new FulltimeJob("hehe");
+console.log(a.calculateSalary());
+console.log(b.calculateSalary());

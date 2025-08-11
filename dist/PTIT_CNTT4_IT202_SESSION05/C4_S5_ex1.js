@@ -1,13 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let students = [
-    "Nguyen Van A",
-    "Nguyen Van B",
-    "Nguyen Van C",
-    "Nguyen Van D",
-    "Nguyen Van E",
-];
-console.log("Danh sách sinh viên:");
-for (let i = 0; i < students.length; i++) {
-    console.log(`${i + 1}. ${students[i]}`);
+class Shape {
+    constructor(name) {
+        this.name = name;
+    }
+    getsize() { }
 }
+class Rectangle extends Shape {
+    constructor(name, width, height) {
+        super(name);
+        this.width = width;
+        this.height = height;
+    }
+    getsize() {
+        console.log(this.width * this.height);
+    }
+}
+const tv = new Rectangle("sony", 100, 100);
+tv.getsize();
