@@ -1,0 +1,49 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Account {
+    constructor(accountNumber, balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.history = [];
+    }
+}
+class checkingAccount extends Account {
+    constructor(accountNumber, balance, overdraftLimit) {
+        super(accountNumber, balance);
+        this.overdraftLimit = overdraftLimit;
+    }
+    deposit(temp) {
+        if (temp >= 0) {
+            this.balance += temp;
+            this.history.push(`+ ${temp}`);
+        }
+        else {
+            console.log("nap ko thanh cong");
+        }
+    }
+    withdraw(temp) {
+        if (temp >= 0 && Math.abs(this.balance - temp) <= this.overdraftLimit) {
+            this.balance -= temp;
+            this.history.push(`- ${temp}`);
+        }
+        else {
+            console.log("rut tien that bai");
+        }
+    }
+    showHistory() {
+        this.history.forEach((e) => {
+            console.log(e);
+        });
+    }
+    getbalance() {
+        return this.balance;
+    }
+}
+const t = new checkingAccount(1, 100000, 100000);
+t.deposit(1000);
+console.log(t.getbalance());
+t.withdraw(100000);
+t.showHistory();
+console.log(t.getbalance());
+t.withdraw(101000);
+t.withdraw(1);
