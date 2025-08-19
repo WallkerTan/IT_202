@@ -52,3 +52,19 @@
   "include": ["./**/*.ts"],              // Thư mục chứa code TS cần biên dịch
   "exclude": ["node_modules", "dist"] // Bỏ qua node_modules và folder build
 }
+
+/*import  as readline from readline;
+
+ Tạo interface đọc từ bàn phím
+const rl = readline.createInterface({
+    input process.stdin,
+    output process.stdout
+});
+
+ Hàm hỏi người dùng (promise)
+function ask(question string) Promisestring {
+    return new Promise(resolve = {
+        rl.question(question, answer = resolve(answer.trim()));
+    });
+}*/
+//npm install --save-dev @types/node

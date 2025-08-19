@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/WallkerTan/IT_202/issues"
   },
-  "homepage": "https://github.com/WallkerTan/IT_202#readme"
+  "homepage": "https://github.com/WallkerTan/IT_202#readme",
+  "devDependencies": {
+    "@types/node": "^24.2.1"
+  }
 }
