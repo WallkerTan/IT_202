@@ -19,7 +19,6 @@ export default function ListCourse() {
       >
         Danh sách khóa học
       </h1>
-
       <ol style={{ fontSize: "1.25rem", paddingLeft: "2rem" }}>
         {courses.map((name) => (
           <li key={name}>{name}</li>
