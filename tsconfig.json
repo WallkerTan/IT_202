@@ -1,70 +1,7 @@
 {
-  // Đây là file cấu hình cho trình biên dịch TypeScript
-  // Bạn có thể tìm hiểu thêm tại: https://aka.ms/tsconfig
-  "compilerOptions": {
-    // ===== File Layout =====
-    "rootDir": "./",             // Thư mục chứa file nguồn TS
-    "outDir": "./dist",             // Nơi xuất file JS sau khi biên dịch
-
-    // ===== Environment Settings =====
-    "module": "commonjs",           // Dễ dùng cho NodeJS (khuyên dùng nếu chỉ chạy bằng node)
-    "target": "es6",                // Biên dịch ra mã JavaScript phổ biến (tương thích nhiều môi trường)
-    // "lib": ["esnext", "dom"],    // KHÔNG cần nếu không dùng DOM hoặc React
-    // "types": ["node"],           // Chỉ cần nếu dùng NodeJS APIs (fs, path...) + đã cài @types/node
-
-    // ===== Other Outputs =====
-    // "sourceMap": true,           // Bật nếu cần debug file JS (gỡ lỗi)
-    // "declaration": true,         // Chỉ dùng khi viết thư viện để người khác import
-    // "declarationMap": true,      // Gỡ lỗi tốt hơn cho file .d.ts
-
-    // ===== Type Checking =====
-    "strict": false,                // TẮT strict mode để đơn giản hoá kiểm tra
-    // "noImplicitAny": true,       // Không cần khi đã tắt strict
-    // "strictNullChecks": true,
-    // "strictFunctionTypes": true,
-    // "noUncheckedIndexedAccess": true,
-    // "exactOptionalPropertyTypes": true,
-
-    // ===== Module Resolution =====
-    // "moduleResolution": "node", // Bỏ qua, CommonJS đã mặc định dùng node
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    // "allowSyntheticDefaultImports": true,
-    // "resolveJsonModule": true,
-
-    // ===== JSX & React =====
-    // "jsx": "react-jsx",          // Không cần nếu không dùng React
-
-    // ===== Style Checks (tuỳ bật thêm khi cần clean code) =====
-    // "noImplicitReturns": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noImplicitOverride": true,
-
-    // ===== Build Performance / Compatibility =====
-    // "verbatimModuleSyntax": true,
-    // "isolatedModules": true,
-    // "noUncheckedSideEffectImports": true,
-    // "moduleDetection": "force",
-    "skipLibCheck": true           // Bỏ qua kiểm tra type trong node_modules để build nhanh hơn
-  },
-  "include": ["./**/*.ts"],              // Thư mục chứa code TS cần biên dịch
-  "exclude": ["node_modules", "dist"] // Bỏ qua node_modules và folder build
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
-
-/*import  as readline from readline;
-
- Tạo interface đọc từ bàn phím
-const rl = readline.createInterface({
-    input process.stdin,
-    output process.stdout
-});
-
- Hàm hỏi người dùng (promise)
-function ask(question string) Promisestring {
-    return new Promise(resolve = {
-        rl.question(question, answer = resolve(answer.trim()));
-    });
-}*/
-//npm install --save-dev @types/node
