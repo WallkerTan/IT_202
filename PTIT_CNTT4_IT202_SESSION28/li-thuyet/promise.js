@@ -1,3 +1,4 @@
+const { promises } = require("dns");
 
 function getdataApi1() {
     return new Promise((res, reject) => {
