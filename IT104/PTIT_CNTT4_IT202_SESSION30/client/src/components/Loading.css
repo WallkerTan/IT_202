@@ -1,0 +1,21 @@
+.circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-left: 5px solid skyblue;
+    border-right: 5px solid skyblue;
+    border-top: 5px solid dodgerblue;
+    border-bottom: 5px solid dodgerblue;
+    animation: circle 0.8s infinite alternate-reverse;
+}
+@keyframes circle {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+}
+.loading{
+    margin: auto;
+}
