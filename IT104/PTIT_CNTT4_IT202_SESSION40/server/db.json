@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "quần"
+    },
+    {
+      "id": 2,
+      "name": "áo"
+    },
+    {
+      "id": 3,
+      "name": "mũ"
+    }
+  ],
+  "products": [
+    {
+      "name": "glowing womb 2",
+      "categoryId": 2,
+      "price": 1e+25,
+      "status": "active",
+      "id": 5
+    },
+    {
+      "name": "lập trình Scratch cơ bản",
+      "categoryId": 2,
+      "price": 1234,
+      "status": "inactive",
+      "id": 6
+    }
+  ]
+}
